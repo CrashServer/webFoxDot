@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="main-container">
-        <div class="panel" id="panel">
+        <div class="panel open" id="panel">
 			<header>
 				<h1>WebFoxDot</h1>
 			</header>
@@ -72,6 +72,7 @@
       
       	<div id="editor-container">       
 			<div id="editor"></div>
+			<div class="logSeparator" id="logSeparator"></div>
 			<div class="logPanel" id="logPanel">
 				<div class="logs"></div>
 			</div>
@@ -197,6 +198,14 @@
 			<h2>Shortcuts</h2>
 			<div class="shortcuts-grid">
 				<div class="shortcut">
+					<div class="shortcut-key"><strong>Ctrl + Enter</strong></div>
+					<div class="shortcut-desc">Evaluate line</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Ctrl + Alt + Enter</strong></div>
+					<div class="shortcut-desc">Evaluate bloc</div>
+				</div>
+				<div class="shortcut">
 					<div class="shortcut-key"><strong>Ctrl + ;</strong></div>
 					<div class="shortcut-desc">Stop FoxDot</div>
 				</div>
@@ -232,14 +241,7 @@
 					<div class="shortcut-key"><strong>Ctrl + Alt + X</strong></div>
 					<div class="shortcut-desc">Comment block and stop it</div>
 				</div>
-				<div class="shortcut">
-					<div class="shortcut-key"><strong>Ctrl + Enter</strong></div>
-					<div class="shortcut-desc">Evaluate line</div>
-				</div>
-				<div class="shortcut">
-					<div class="shortcut-key"><strong>Ctrl + Alt + Enter</strong></div>
-					<div class="shortcut-desc">Evaluate bloc</div>
-				</div>
+				
 				<div class="shortcut">
 					<div class="shortcut-key"><strong>Alt + 1/2/3</strong></div>
 					<div class="shortcut-desc">Add a color marker</div>
@@ -306,6 +308,7 @@
         </ul>
   	</div>
 
+	<script type="module" src="/src/js/panel.js"></script>
     <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>

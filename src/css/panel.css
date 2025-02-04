@@ -11,15 +11,8 @@
   overflow: auto;
   max-width: 100%;
   line-height: 1;
+  height: 100%;
   z-index: 1000;
-}
-
-.panel.open {
-  left: 0px;
-}
-
-.panel.close {
-  left: -500px;
 }
 
 h1 {

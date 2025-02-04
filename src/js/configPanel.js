@@ -9,9 +9,8 @@ export function setupConfigPanel(editor) {
     const modal = document.getElementById("shortcutsModal");
     const modalbtn = document.getElementById("openModalShortCutBtn");
     const closeModal = document.getElementById("closeModal");
-    const themeInterface = document.getElementById('themeInterface');
- 
-    // Gestion du changement de police
+     
+    // Font change
     fontSelect.addEventListener('change', (e) => {
         const font = e.target.value;
         editor.getWrapperElement().style.fontFamily = font;
@@ -19,19 +18,19 @@ export function setupConfigPanel(editor) {
         localStorage.setItem('preferredFont', font);
     });
 
-    // Restaurer la police sauvegardée
+    // Font restore
     const savedFont = localStorage.getItem('preferredFont');
     if (savedFont) {
         fontSelect.value = savedFont;
         editor.getWrapperElement().style.fontFamily = savedFont;
         }
 
-    // Gestion ouverture/fermeture du panneau
+    // Open the panel
     configButton.addEventListener('click', () => {
         configPanel.classList.toggle('open');
     });
 
-    // Fermer le panneau en cliquant en dehors
+    // Close the panel when clicking outside
     document.addEventListener('click', (e) => {
         if (!configPanel.contains(e.target) && 
             !configButton.contains(e.target) && 
@@ -40,7 +39,7 @@ export function setupConfigPanel(editor) {
         }
     });
 
-    // Gestion du thème
+    // Theme change
     const themeSelect = document.getElementById('themeSelect');
     themeSelect.addEventListener('change', (e) => {
         const theme = e.target.value;
@@ -48,81 +47,72 @@ export function setupConfigPanel(editor) {
         localStorage.setItem('preferredTheme', theme);
     });
 
-    // Restaurer le thème
+    // Theme restore
     const savedTheme = localStorage.getItem('preferredTheme');
     if (savedTheme) {
         editor.setOption('theme', savedTheme);
         themeSelect.value = savedTheme;
     }
 
-    
-
-    // Restaurer la taille sauvegardée
+    // Font size restore
     const savedSize = localStorage.getItem('preferredFontSize');
     if (savedSize) {
         fontSizeSlider.value = savedSize;
         updateFontSize(savedSize);
     }
 
+    // Interface font size restore
     const savedInterfaceSize = localStorage.getItem('preferredInterfaceFontSize');
     if (savedInterfaceSize) {
         fontInterfaceSizeSlider.value = savedInterfaceSize;
         updateInterfaceFontSize(savedInterfaceSize);
     }
 
-    // Mettre à jour lors du changement
+    // Font size change
     fontSizeSlider.addEventListener('input', (e) => {
         const size = e.target.value;
         updateFontSize(size);
         });
 
+    // Font size update
     function updateFontSize(size) {
-        // Mettre à jour l'affichage
         fontSizeValue.textContent = size;
-        
-        // Mettre à jour l'éditeur
         editor.getWrapperElement().style.fontSize = size + 'px';
-        
-        // Forcer le rafraîchissement
         editor.refresh();
-        
-        // Sauvegarder la préférence
         localStorage.setItem('preferredFontSize', size);
     }
 
+    // Interface font size change
     fontInterfaceSizeSlider.addEventListener('input', (e) => {
         const size = e.target.value;
         updateInterfaceFontSize(size);
         });
     
+    // Interface font size update
     function updateInterfaceFontSize(size) {
-        // Mettre à jour l'affichage
         fontInterfaceSizeValue.textContent = size;
-        
-        // Mettre à jour l'interface
         document.documentElement.style.fontSize = size + 'px';
-        
-        // Sauvegarder la préférence
         localStorage.setItem('preferredInterfaceFontSize', size);
     };
 
-    // Ouvrir la modal
+    // Open the shortcut modal
     modalbtn.onclick = function() {
         modal.style.display = "block";
     }
 
-    // Fermer la modal
+    // Close the shortcut modal
     closeModal.onclick = function() {
         modal.style.display = "none";
     }
 
-    // Fermer la modal en cliquant en dehors de celle-ci
+    // Close the modal when clicking outside
     window.onclick = function(event) {
         if (event.target == modal) {
         modal.style.display = "none";
         }
     }
 
+    // Theme change
     themeInterface.addEventListener('change', (event) => {
         if (event.target.checked) {
             document.documentElement.classList.remove('light-theme');

@@ -1,0 +1,6 @@
+{
+    "HOST_IP": "localhost", 
+    "FOXDOT_PATH": "/home/zbdm/program/FoxDot",
+    "FOXDOT_WS_PORT": 20000,
+    "SC_CPU_PORT": 2887
+}

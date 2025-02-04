@@ -95,6 +95,7 @@ body {
   flex-direction: row;
   flex-wrap: nowrap;
   height: 100vh;
+  width: 100%;
 }
 
 #editor-container {
@@ -111,6 +112,14 @@ body {
   min-height: 0;
 }
 
+.logSeparator {
+  border: 1px solid var(--border-col-1);
+  height: 4px;
+  width: 100%;
+  background-color: var(--border-col-2);
+  cursor:row-resize;
+}
+
 #logPanel {
   display: flex;
   flex-direction: column;
@@ -120,6 +129,7 @@ body {
   /* flex-grow: 1; */
   height: 20%;
   /* padding-top: 30px; */
+  
 }
 
 #logAndChat {
