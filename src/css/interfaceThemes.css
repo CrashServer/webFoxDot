@@ -1,0 +1,37 @@
+/* Dark Theme */
+:root {
+    --bg-col-1: #2b2b2b;
+    --bg-col-2: #333;
+    --border-col-1: #666;
+    --border-col-2: #555;
+    --text-col-1: #ECDFCC;
+    --text-col-2: #e0e0e0;
+    --beat-col-1: #3c3c3c;
+    --beat-col-2: #FFAA4478;
+    --col-red: rgba(155, 41, 41, 0.75);
+    --col-green: rgba(71, 155, 41, 0.75);
+    --col-blue: rgba(41, 96, 155, 0.75);
+    --col-full-red: rgb(219, 85, 85);
+    --col-full-green: rgb(112, 207, 78);
+    --col-full-blue: rgb(77, 139, 206);
+    --flash-col: rgba(255, 202, 40, 0.5);
+}
+
+/* Light Theme */
+:root.light-theme {
+    --bg-col-1: #f5f5f5;
+    --bg-col-2: #e0e0e0;
+    --border-col-1: #ccc;
+    --border-col-2: #bbb;
+    --text-col-1: #333;
+    --text-col-2: #555;
+    --beat-col-1: #ddd;
+    --beat-col-2: #ffcc00;
+    --col-red: rgba(155, 41, 41, 0.75);
+    --col-green: rgba(71, 155, 41, 0.75);
+    --col-blue: rgba(41, 96, 155, 0.75);
+    --col-full-red: rgba(155, 41, 41);
+    --col-full-green: rgba(71, 155, 41);
+    --col--full-blue: rgba(41, 96, 155);
+    --flash-col: rgba(255, 202, 40, 0.5);
+}

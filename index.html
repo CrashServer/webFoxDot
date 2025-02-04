@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Web FoxDot</title>
+</head>
+<body>
+    <div id="main-container">
+        <div class="panel" id="panel">
+			<header>
+				<h1>WebFoxDot</h1>
+			</header>
+        
+			<section class="foxdot-info">
+				<fieldset class="info-row">
+					<legend>Bpm</legend>
+					<div class="info-text" id="bpm">000</div>
+				</fieldset>
+				<fieldset class="info-row">
+					<legend>Scale</legend>
+					<div class="info-text" id="scale">Major</div>
+				</fieldset>
+				<fieldset class="info-row">
+					<legend>Root</legend>
+					<div class="info-text" id="root">0</div>
+				</fieldset>
+			</section>
+            
+			<section class="cpu-info">
+				<fieldset class="info-row">
+					<legend>CPU</legend>
+					<div class="info-text" id="cpu">Not receive</div>
+				</fieldset>
+			</section>
+        
+			<section class="timer">
+				<fieldset class="info-row">
+					<legend>Timer</legend>
+					<div class="info-text" id="timer">00:00</div>
+				</fieldset>
+			</section>
+
+			<section class="beat">
+				<fieldset class="info-row">
+					<legend>Beat</legend>
+					<div>
+						<div class="beat-steps" id="beat-8">0/8</div>
+						<div class="beat-steps" id="beat-16">0/16</div>
+						<div class="beat-steps" id="beat-32">0/32</div>
+						<div class="beat-steps" id="beat-64">0/64</div>
+					</div>
+				</fieldset>
+			</section>
+                
+			<section class="players">
+				<fieldset class="info-row">
+					<legend>Players</legend>
+					<div id="players" class="simple-text h20">       
+					</div>
+				</fieldset>
+			</section>
+
+			<section class="help">
+				<fieldset class="info-row">
+					<legend>Help</legend>
+					<div id="help" class="simple-text h40"></div>
+				</fieldset>
+			</section>
+    	</div>
+      
+      	<div id="editor-container">       
+			<div id="editor"></div>
+			<div class="logPanel" id="logPanel">
+				<div class="logs"></div>
+			</div>
+			<button id="configButton"><img src="/src/images/gear.svg"></button>
+			<div id="configPanel" class="config-panel">
+				<h3>Configuration</h3>
+				<div class="input-group">
+                  <label for="themeSelect">Theme:</label>
+                  <select id="themeSelect">
+						<option>default</option>
+						<option>3024-day</option>
+						<option>3024-night</option>
+						<option>abbott</option>
+						<option>abcdef</option>
+						<option>ambiance</option>
+						<option>ayu-dark</option>
+						<option>ayu-mirage</option>
+						<option>base16-dark</option>
+						<option>base16-light</option>
+						<option>bespin</option>
+						<option>blackboard</option>
+						<option>cobalt</option>
+						<option>colorforth</option>
+						<option>darcula</option>
+						<option>dracula</option>
+						<option>duotone-dark</option>
+						<option>duotone-light</option>
+						<option>eclipse</option>
+						<option>elegant</option>
+						<option>erlang-dark</option>
+						<option>gruvbox-dark</option>
+						<option>hopscotch</option>
+						<option>icecoder</option>
+						<option>idea</option>
+						<option>isotope</option>
+						<option>juejin</option>
+						<option>lesser-dark</option>
+						<option>liquibyte</option>
+						<option>lucario</option>
+						<option>material</option>
+						<option selected>material-darker</option>
+						<option>material-palenight</option>
+						<option>material-ocean</option>
+						<option>mbo</option>
+						<option>mdn-like</option>
+						<option>midnight</option>
+						<option>monokai</option>
+						<option>moxer</option>
+						<option>neat</option>
+						<option>neo</option>
+						<option>night</option>
+						<option>nord</option>
+						<option>oceanic-next</option>
+						<option>panda-syntax</option>
+						<option>paraiso-dark</option>
+						<option>paraiso-light</option>
+						<option>pastel-on-dark</option>
+						<option>railscasts</option>
+						<option>rubyblue</option>
+						<option>seti</option>
+						<option>shadowfox</option>
+						<option>solarized dark</option>
+						<option>solarized light</option>
+						<option>the-matrix</option>
+						<option>tomorrow-night-bright</option>
+						<option>tomorrow-night-eighties</option>
+						<option>ttcn</option>
+						<option>twilight</option>
+						<option>vibrant-ink</option>
+						<option>xq-dark</option>
+						<option>xq-light</option>
+						<option>yeti</option>
+						<option>yonce</option>
+						<option>zenburn</option>
+                  	</select>
+				</div>
+              
+              	<div class="input-group">
+                  	<label for="fontSelect">Font:</label>
+                  	<select id="fontSelect">
+						<option value="monospace">Monospace</option>
+						<option value="Courier New">Courier New</option>
+						<option value="Consolas">Consolas</option>
+						<option value="Fira Code">Fira Code</option>
+						<option value="UbuntuMono">Ubuntu Mono</option>
+						<option value="Cascadia">Cascadia</option>
+						<option value="JetBrainsMono">JetBrain Mono</option>
+                  	</select>
+              	</div>
+				<div class="input-group">
+						<label for="fontSizeSelect">Font Size: </label>
+						<input type="range" min="12" max="64" value="16" step="1" id="fontSizeSlider"><span id="fontSizeValue">16</span>
+				</div>
+				<div class="input-group">
+						<label for="fontInterfaceSizeSelect">Font Interface Size: </label>
+						<input type="range" min="12" max="64" value="16" step="1" id="fontInterfaceSizeSlider"><span id="fontInterfaceSizeValue">16</span>
+				</div>
+
+				<div class="toggle-group">
+					<div class="toggle-item">
+						<label>Toggle Panel</label>
+						<label class="toggle-switch">
+							<input type="checkbox" id="panelToggle" checked/>
+							<span class="slider"></span>
+						</label>
+					</div>
+					<div class="toggle-item">
+						<label>Theme interface</label>
+						<label class="toggle-switch">
+							<input type="checkbox" id="themeInterface" checked/>
+							<span class="slider"></span>
+						</label>
+					</div>
+				</div>
+              	<button id="openModalShortCutBtn">Show shortcuts</button>
+          	</div>
+      	</div>
+  	</div>
+      <!-- Modal -->
+	<div id="shortcutsModal" class="modal">
+		<div class="modal-content">
+			<span class="close" id="closeModal">&times;</span>
+			<h2>Shortcuts</h2>
+			<div class="shortcuts-grid">
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Ctrl + ;</strong></div>
+					<div class="shortcut-desc">Stop FoxDot</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Ctrl + C</strong></div>
+					<div class="shortcut-desc">Copy current line</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Ctrl + D</strong></div>
+					<div class="shortcut-desc">Select current line</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Ctrl + Shift + D</strong></div>
+					<div class="shortcut-desc">Duplicate current line</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Ctrl + Shift + Up/Down</strong></div>
+					<div class="shortcut-desc">Move line up/down</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Ctrl + Alt + Left/Right</strong></div>
+					<div class="shortcut-desc">Go to beginning/end line</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Ctrl + Space</strong></div>
+					<div class="shortcut-desc">Auto complete</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Alt + x</strong></div>
+					<div class="shortcut-desc">Comment line and stop it</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Ctrl + Alt + X</strong></div>
+					<div class="shortcut-desc">Comment block and stop it</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Ctrl + Enter</strong></div>
+					<div class="shortcut-desc">Evaluate line</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Ctrl + Alt + Enter</strong></div>
+					<div class="shortcut-desc">Evaluate bloc</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Alt + 1/2/3</strong></div>
+					<div class="shortcut-desc">Add a color marker</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Alt + 4</strong></div>
+					<div class="shortcut-desc">Remove markers</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Alt + I</strong></div>
+					<div class="shortcut-desc">Inline help</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Alt + F</strong></div>
+					<div class="shortcut-desc">Open search console</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Ctrl + G</strong></div>
+					<div class="shortcut-desc">Go to next search</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Ctrl + D</strong></div>
+					<div class="shortcut-desc">Select next occurrence</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Ctrl + Shift + Space</strong></div>
+					<div class="shortcut-desc">Select in parenthesis</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Ctrl + SHIFT + R</strong></div>
+					<div class="shortcut-desc">Replace everywhere</div>
+				</div>
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Alt + G</strong></div>
+					<div class="shortcut-desc">Go to line</div>
+				</div>
+				<!-- <div class="shortcut">
+					<div class="shortcut-key"><strong>Alt + Q</strong></div>
+					<div class="shortcut-desc">Repli le code entre 2 #</div>
+				</div> -->
+				<div class="shortcut">
+					<div class="shortcut-key"><strong>Ctrl + S</strong></div>
+					<div class="shortcut-desc">Save code</div>
+				</div>
+
+			</div>
+		</div>
+  	</div>
+
+  	<div id="piano-roll" class="hidden">
+      	<ul class="piano-key">
+			<li class="white c" data-note="C">0</li>
+			<li class="black cs" data-note="C#">0</li>
+			<li class="white d" data-note="D">0</li>
+			<li class="black ds" data-note="D#">0</li>
+			<li class="white e" data-note="E">0</li>
+			<li class="white f" data-note="F">0</li>
+			<li class="black fs" data-note="F#">0</li>
+			<li class="white g" data-note="G">0</li>
+			<li class="black gs" data-note="G#">0</li>
+			<li class="white a" data-note="A">0</li>
+			<li class="black as" data-note="A#">0</li>
+			<li class="white b" data-note="B">0</li>
+        </ul>
+  	</div>
+
+    <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+/* src/css/style.css */
+@import 'codemirror/theme/3024-day.css';
+@import 'codemirror/theme/3024-night.css';
+@import 'codemirror/theme/abbott.css';
+@import 'codemirror/theme/abcdef.css';
+@import 'codemirror/theme/ambiance.css';
+@import 'codemirror/theme/ayu-dark.css';
+@import 'codemirror/theme/ayu-mirage.css';
+@import 'codemirror/theme/base16-dark.css';
+@import 'codemirror/theme/bespin.css';
+@import 'codemirror/theme/base16-light.css';
+@import 'codemirror/theme/blackboard.css';
+@import 'codemirror/theme/cobalt.css';
+@import 'codemirror/theme/colorforth.css';
+@import 'codemirror/theme/dracula.css';
+@import 'codemirror/theme/duotone-dark.css';
+@import 'codemirror/theme/duotone-light.css';
+@import 'codemirror/theme/eclipse.css';
+@import 'codemirror/theme/elegant.css';
+@import 'codemirror/theme/erlang-dark.css';
+@import 'codemirror/theme/gruvbox-dark.css';
+@import 'codemirror/theme/hopscotch.css';
+@import 'codemirror/theme/icecoder.css';
+@import 'codemirror/theme/isotope.css';
+@import 'codemirror/theme/juejin.css';
+@import 'codemirror/theme/lesser-dark.css';
+@import 'codemirror/theme/liquibyte.css';
+@import 'codemirror/theme/lucario.css';
+@import 'codemirror/theme/material.css';
+@import 'codemirror/theme/material-darker.css';
+@import 'codemirror/theme/material-palenight.css';
+@import 'codemirror/theme/material-ocean.css';
+@import 'codemirror/theme/mbo.css';
+@import 'codemirror/theme/mdn-like.css';
+@import 'codemirror/theme/midnight.css';
+@import 'codemirror/theme/monokai.css';
+@import 'codemirror/theme/moxer.css';
+@import 'codemirror/theme/neat.css';
+@import 'codemirror/theme/neo.css';
+@import 'codemirror/theme/night.css';
+@import 'codemirror/theme/nord.css';
+@import 'codemirror/theme/oceanic-next.css';
+@import 'codemirror/theme/panda-syntax.css';
+@import 'codemirror/theme/paraiso-dark.css';
+@import 'codemirror/theme/paraiso-light.css';
+@import 'codemirror/theme/pastel-on-dark.css';
+@import 'codemirror/theme/railscasts.css';
+@import 'codemirror/theme/rubyblue.css';
+@import 'codemirror/theme/seti.css';
+@import 'codemirror/theme/shadowfox.css';
+@import 'codemirror/theme/solarized.css';
+@import 'codemirror/theme/the-matrix.css';
+@import 'codemirror/theme/tomorrow-night-bright.css';
+@import 'codemirror/theme/tomorrow-night-eighties.css';
+@import 'codemirror/theme/ttcn.css';
+@import 'codemirror/theme/twilight.css';
+@import 'codemirror/theme/vibrant-ink.css';
+@import 'codemirror/theme/xq-dark.css';
+@import 'codemirror/theme/xq-light.css';
+@import 'codemirror/theme/yeti.css';
+@import 'codemirror/theme/idea.css';
+@import 'codemirror/theme/darcula.css';
+@import 'codemirror/theme/yonce.css';
+@import 'codemirror/theme/zenburn.css';
+@import 'interfaceThemes.css';
+
+
+@font-face {
+  font-family: 'Fira Code';
+  src: url('../fonts/FiraCode-Regular.woff2');
+}
+
+@font-face {
+  font-family: Cascadia;
+  src: url("../fonts/CascadiaMono.woff2");
+
+}
+@font-face {
+  font-family: JetBrainsMono;
+  src: url("../fonts/JetBrainsMono-Regular.woff2");
+}
+@font-face {
+  font-family: UbuntuMono;
+  src: url("../fonts/UbuntuMono-Regular.ttf");
+}
+
+body {
+  margin: 0;
+  background: var(--bg-col-1);
+  height: 100vh;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 100vh;
+}
+
+#editor-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: var(--bg-col-1);
+  width: 100%;
+  flex-grow: 1;
+}
+
+#editor {
+  flex: 1;
+  min-height: 0;
+}
+
+#logPanel {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: var(--bg-col-2);
+  width: 100%;
+  /* flex-grow: 1; */
+  height: 20%;
+  /* padding-top: 30px; */
+}
+
+#logAndChat {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 100%;
+  overflow: auto;
+}
+
+#logs {
+  background: var(--bg-col-1);
+  color: var(--text-col-1);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: inherit;
+  overflow-y: auto;
+  border-top: 1px solid #3d3d3d;
+  width: 70%;
+}
+
+.log-entry {
+  margin: 2px 0;
+  padding: 2px 5px;
+  white-space: pre-wrap;
+  border-left: 3px solid var(--border-col-1);
+}
+
+.log-entry.error-log {
+  border-color: var(--col-red);
+  color: var(--col-full-red);
+}
+
+.log-entry.help {
+  border-color: var(--col-blue);
+}
+
+.CodeMirror {
+  height: 100%;
+  font-size: 16px;
+  color: var(--text-col-1);
+}
+
+.CodeMirror pre.CodeMirror-line {
+  padding-bottom: 0.8rem;
+  font-variant-ligatures: none !important;
+}
+
+.CodeMirror-cursor {
+  border-left: 2px solid #fff !important;
+}
+
+.CodeMirror-lines {
+  padding-left: 0.5rem;
+}
+
+.CodeMirror-linenumber {
+  left: -0.5rem !important; 
+}
+
+.CodeMirror-tooltip {
+  position: absolute;
+  background-color: var(--bg-col-2);
+  white-space: pre;
+  color: var(--text-col-1);
+  border: 1px solid var(--border-col-2);
+  border-radius: 4px;
+  padding: 0.2rem;
+  font-size: inherit;
+  font-family: inherit;
+  z-index: 1000;
+}
+
+.CodeMirror-matchingbracket {
+  color: var(--col-green) !important; 
+  background-color: rgba(0, 255, 0, 0.2);
+  font-weight: bold;
+  border-bottom: 1px solid var(--col-blue);
+}
+
+.CodeMirror-nonmatchingbracket {
+  color: var(--col-red) !important; 
+  background-color: rgba(255, 0, 0, 0.2); 
+  font-weight: bold;
+}
+
+.CodeMirror-dialog-bottom {
+  bottom: 0.2rem;
+  left: 40px;
+  width: 40%;
+  border-bottom: 1px solid var(--border-col-2);
+  border-radius: 4px;
+  background-color: var(--text-col-1);
+  color: var(--bg-col-1);
+  height: 2rem;
+}
+
+.lineRed {
+  background-color: var(--col-red);
+}
+
+.lineGreen {
+  background-color: var(--col-green);
+}
+
+.lineBlue {
+  background-color: var(--col-blue);
+}
+
+.remote-selection {
+  opacity: 0.3;
+}
+
+.CodeMirror-cursor {
+  border-left-width: 2px;
+  border-left-style: solid;
+}
+
+.flash-highlight {
+  background-color: var(--flash-col) !important;
+  transition: background-color 0.2s ease;
+}
+
+.CodeMirror-hints {
+  background: var(--bg-col-2);
+  border: 1px solid var(--border-col-2);
+  font-family: inherit;
+  padding: 2px;
+  font-size: inherit;
+}
+.CodeMirror-hint {
+  color: var(--text-col-1);
+  padding: 4px 8px;
+}
+.CodeMirror-hint-active {
+  background: var(--col-blue);
+}
