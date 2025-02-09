@@ -1,3 +1,5 @@
+// Config panel setup to change the editor's font, theme, font size, interface font size and open a modal with the shortcuts. Save the user's preferences in the local storage.
+
 export function setupConfigPanel(editor) {
     const configButton = document.getElementById('configButton');
     const configPanel = document.getElementById('configPanel');
@@ -15,11 +17,11 @@ export function setupConfigPanel(editor) {
         const font = e.target.value;
         editor.getWrapperElement().style.fontFamily = font;
         document.body.style.fontFamily = font;
-        localStorage.setItem('preferredFont', font);
+        localStorage.setItem('webFoxPreferredFont', font);
     });
 
     // Font restore
-    const savedFont = localStorage.getItem('preferredFont');
+    const savedFont = localStorage.getItem('webFoxPreferredFont');
     if (savedFont) {
         fontSelect.value = savedFont;
         editor.getWrapperElement().style.fontFamily = savedFont;
@@ -44,25 +46,25 @@ export function setupConfigPanel(editor) {
     themeSelect.addEventListener('change', (e) => {
         const theme = e.target.value;
         editor.setOption('theme', theme);
-        localStorage.setItem('preferredTheme', theme);
+        localStorage.setItem('webFoxPreferredTheme', theme);
     });
 
     // Theme restore
-    const savedTheme = localStorage.getItem('preferredTheme');
+    const savedTheme = localStorage.getItem('webFoxPreferredTheme');
     if (savedTheme) {
         editor.setOption('theme', savedTheme);
         themeSelect.value = savedTheme;
     }
 
     // Font size restore
-    const savedSize = localStorage.getItem('preferredFontSize');
+    const savedSize = localStorage.getItem('webFoxPreferredFontSize');
     if (savedSize) {
         fontSizeSlider.value = savedSize;
         updateFontSize(savedSize);
     }
 
     // Interface font size restore
-    const savedInterfaceSize = localStorage.getItem('preferredInterfaceFontSize');
+    const savedInterfaceSize = localStorage.getItem('webFoxPreferredInterfaceFontSize');
     if (savedInterfaceSize) {
         fontInterfaceSizeSlider.value = savedInterfaceSize;
         updateInterfaceFontSize(savedInterfaceSize);
@@ -79,7 +81,7 @@ export function setupConfigPanel(editor) {
         fontSizeValue.textContent = size;
         editor.getWrapperElement().style.fontSize = size + 'px';
         editor.refresh();
-        localStorage.setItem('preferredFontSize', size);
+        localStorage.setItem('webFoxPreferredFontSize', size);
     }
 
     // Interface font size change
@@ -92,7 +94,7 @@ export function setupConfigPanel(editor) {
     function updateInterfaceFontSize(size) {
         fontInterfaceSizeValue.textContent = size;
         document.documentElement.style.fontSize = size + 'px';
-        localStorage.setItem('preferredInterfaceFontSize', size);
+        localStorage.setItem('webFoxPreferredInterfaceFontSize', size);
     };
 
     // Open the shortcut modal

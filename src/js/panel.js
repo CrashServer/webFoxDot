@@ -24,7 +24,7 @@ panelToggle.addEventListener('change', () => {
 const ws = new WebSocket(`ws://${config.HOST_IP}:20000`);
 
 ws.onopen = function() {
-    console.log('CrashPanel WebSocket connection opened');
+    console.log('FoxDot WebSocket connection opened');
 };
 
 ws.onmessage = function(event) {
@@ -49,7 +49,7 @@ ws.onmessage = function(event) {
             updateBeat(data.beat);
             break;
         case 'chrono':
-            document.getElementById('chrono').textContent = formatTime(data.chrono);
+            document.getElementById('timer').textContent = formatTime(data.chrono);
             break;
         case 'players':
             formatPlayers(data.players)
@@ -65,11 +65,11 @@ ws.onmessage = function(event) {
 };
 
 ws.onclose = function() {
-    console.log('WebSocket Crashpanel connection closed');
+    console.log('WebSocket FoxDot connection closed');
 };
 
 ws.onerror = function(error) {
-    console.error('WebSocket CrashPanel error:', error);
+    console.error('WebSocket FoxDot error:', error);
 };
 
 document.getElementById('root').addEventListener('click', () => {

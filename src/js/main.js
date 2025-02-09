@@ -19,7 +19,7 @@ import 'codemirror/addon/search/matchesonscrollbar.js'
 import { logsUtils } from './logs.js';
 import { functionUtils } from './functionUtils.js';
 // TODO Autocomplete and definitions
-// import { foxdotAutocomplete } from './foxdotAutocomplete.js';
+import { foxdotAutocomplete } from './foxdotAutocomplete.js';
 // import { showDefinition } from './foxdotDefinitions.js';
 
 import 'codemirror/lib/codemirror.css'
@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 		try {
 		  const message = JSON.parse(event.data);
 		  if (message.type === 'foxdot_log') {
+			console.log(message.data);
 			logsUtils.appendLog(message.data, message.color);
 		  }
 		} catch (error) {
@@ -145,46 +146,42 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 	// TODO recieve autocomplete functions  
-	//   function foxDotWs(){
-	// 	foxdotWs = new WebSocket(`ws://${config.HOST_IP}:${config.FOXDOT_WS_PORT}`);
-	// 	foxdotWs.onopen = () => {
-	// 	  foxdotWs.send(JSON.stringify({ type: 'get_autocomplete' }));
-	// 	};
-	// 	foxdotWs.onmessage = (event) => {
-	// 	  try {
-	// 		const message = JSON.parse(event.data);
-	// 		if (message.type === 'attack') {
-	// 				functionUtils.insertAttackContent(editor, message.content);
-	// 			  }
-	// 		else if (message.type === 'autocomplete') {
-	// 		  const { loops, fxList, synthList, attackList } = functionUtils.formatFoxDotAutocomplete(message);
+	  function foxDotWs(){
+		foxdotWs = new WebSocket(`ws://${config.HOST_IP}:${config.FOXDOT_WS_PORT}`);
+		foxdotWs.onopen = () => {
+		  foxdotWs.send(JSON.stringify({ type: 'get_autocomplete' }));
+		};
+		foxdotWs.onmessage = (event) => {
+		  try {
+			const message = JSON.parse(event.data);
+			if (message.type === 'autocomplete') {
+			  const { loops, fxList, synthList } = functionUtils.formatFoxDotAutocomplete(message);
 	
-	// 		  foxdotAutocomplete.loopList = loops;
-	// 		  foxdotAutocomplete.fxList = fxList;
-	// 		  foxdotAutocomplete.synths= synthList;
-	// 		  foxdotAutocomplete.attackList = attackList;
+			  foxdotAutocomplete.loopList = loops;
+			  foxdotAutocomplete.fxList = fxList;
+			  foxdotAutocomplete.synths= synthList;
 	
-	// 		  if (loops.length == 0 || fxList.length == 0 || synthList.length == 0 || attackList.length == 0) {
-	// 			console.error(`Erreur lors de la récupération de la liste des boucles (${loops.length}), effets (${fxList.length}), synthés (${synthList.length}) ou attaques (${attackList.length})`);
-	// 		  }
-	// 		}
-	// 	  } catch (error) {
-	// 		console.error('Erreur lors de la réception de message FoxDot:', error);
-	// 	  }
-	// 	};
-	// 	foxdotWs.onclose = (e) => {
-	// 	  console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
-	// 	  setTimeout(function() {
-	// 	  foxDotWs();
-	// 	  }, 1000);
-	// 	};
-	// 	foxdotWs.onerror = (err) => {
-	// 	  console.error('Socket encountered error: ', err.message, 'Closing socket');
-	// 	  foxdotWs.close();
-	// 	};
-	//   }
+			  if (loops.length == 0 || fxList.length == 0 || synthList.length == 0) {
+				console.error(`Error on retrieving loops name (${loops.length}), effets (${fxList.length}), synths (${synthList.length})`);
+			  }
+			}
+		  } catch (error) {
+			console.error('Error on FoxDot message ', error);
+		  }
+		};
+		// foxdotWs.onclose = (e) => {
+		//   console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
+		//   setTimeout(function() {
+		//   foxDotWs();
+		//   }, 1000);
+		// };
+		foxdotWs.onerror = (err) => {
+		  console.error('Socket encountered error: ', err.message, 'Closing socket');
+		  foxdotWs.close();
+		};
+	  }
 	
-	//   foxDotWs();
+	  foxDotWs();
 
 	// piano insert at cursor
 	document.querySelectorAll('#piano-roll .piano-key li').forEach(key => {
