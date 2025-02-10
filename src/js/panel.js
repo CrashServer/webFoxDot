@@ -7,7 +7,7 @@ const configRequest = await fetch('../../config.json' );
   }
 const config = await configRequest.json();
 
-// Toggle Crash Panel
+// Toggle Panel
 const panel = document.getElementById('panel')
 const panelToggle = document.getElementById('panelToggle');
 

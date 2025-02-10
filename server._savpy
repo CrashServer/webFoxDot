@@ -1,0 +1,78 @@
+import asyncio
+import websockets
+import subprocess
+import json
+
+connected_clients = set()
+
+async def load_config():
+    try:
+        with open('config.json', 'r') as config_file:
+            config = json.load(config_file)
+            return config
+    except Exception as e:
+        raise Exception(f"Error reading config file: {e}")
+
+async def handle_client(websocket, path, foxdot):
+    connected_clients.add(websocket)
+    try:
+        async for message in websocket:
+            try:
+                data = json.loads(message)
+                if data['type'] == 'evaluate_code':
+                    code = data['code']
+                    foxdot.stdin.write(code + '\n')
+                    foxdot.stdin.flush()
+            except json.JSONDecodeError:
+                pass
+    finally:
+        connected_clients.remove(websocket)
+
+async def broadcast_log(message):
+    if connected_clients:
+        message_obj = {
+            'type': 'foxdot_log',
+            'data': message,
+            'color': None
+        }
+        await asyncio.gather(*[
+            client.send(json.dumps(message_obj)) 
+            for client in connected_clients
+        ])
+
+async def read_foxdot_output(foxdot):
+    while True:
+        output = foxdot.stdout.readline()
+        if output:
+            log_message = output.strip()
+            print(log_message)
+            await broadcast_log(log_message)
+        await asyncio.sleep(0.1)
+
+async def main():
+    config = await load_config()
+    foxdot_path = config.get('FOXDOT_PATH', '.')
+    
+    foxdot = subprocess.Popen(
+        ['python', '-m', 'FoxDot', '-p'],
+        cwd=foxdot_path,
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True
+    )
+    print(f"FoxDot démarré, pid: {foxdot.pid}")
+
+    async with websockets.serve(
+        lambda ws, path: handle_client(ws, path, foxdot),
+        "localhost",
+        1234
+    ):
+        # Cette ligne maintient le serveur actif indéfiniment
+        await asyncio.gather(
+            read_foxdot_output(foxdot),
+        ): await asyncio.Future()
+
+if __name__ == "__main__":
+    print("Serveur démarré sur le port 1234")
+    asyncio.run(main())

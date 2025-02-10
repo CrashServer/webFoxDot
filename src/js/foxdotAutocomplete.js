@@ -219,7 +219,7 @@ export const foxdotAutocomplete = {
             const filteredPlayerFunction = this.playerFunction.filter(f => f.displayText.startsWith(prefix));
             return {
                 list: filteredPlayerFunction.length > 0 ? filteredPlayerFunction.sort((a, b) => a.displayText.localeCompare(b.displayText)) : this.playerFunction.sort((a, b) => a.displayText.localeCompare(b.displayText)),
-                from: CodeMirror.Pos(cursor.line, token.start),
+                from: CodeMirror.Pos(cursor.line, token.start +1),
                 to: CodeMirror.Pos(cursor.line, cursorPosition),
             };
         }

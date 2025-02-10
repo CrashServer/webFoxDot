@@ -1,7 +1,4 @@
 {
-    "HOST_IP": "localhost", 
-    "FOXDOT_PATH": "/home/yourName/CrashServer/live/FoxDot",
-    "SAMPLE_PATH": "/home/yourName/CrashServer/UltimateSamples/",
-    "FOXDOT_WS_PORT": 20000,
-    "SC_CPU_PORT": 2887
+    "FOXDOT_PATH": "/path/to/FoxDot",
+    "SAMPLE_PATH": "/path/to/sample_directory/",
 }
