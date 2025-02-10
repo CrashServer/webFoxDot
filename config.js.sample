@@ -1,0 +1,5 @@
+// Configuration when running a node.js server
+// Rename this file to config.js and update the FOXDOT_PATH to the path of your FoxDot installation 
+export const config = {
+    FOXDOT_PATH: '/path/to/FoxDot',
+}

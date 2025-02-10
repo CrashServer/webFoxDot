@@ -3,7 +3,6 @@ import { setupConfigPanel } from './configPanel.js';
 import { EventEmitter } from './eventBus.js';
 
 import 'codemirror/addon/dialog/dialog.js'
-import './foxdot_mode.js'
 import 'codemirror/keymap/sublime'
 import 'codemirror/addon/edit/matchbrackets'
 import 'codemirror/addon/edit/closebrackets'
@@ -15,6 +14,7 @@ import 'codemirror/addon/search/searchcursor.js'
 import 'codemirror/addon/search/search.js'
 import 'codemirror/addon/search/jump-to-line.js'
 import 'codemirror/addon/search/matchesonscrollbar.js'
+import 'codemirror/mode/python/python.js'
 
 import { logsUtils } from './logs.js';
 import { functionUtils } from './functionUtils.js';
@@ -30,18 +30,11 @@ import '../css/configPanel.css'
 import '../css/panel.css'
 
 document.addEventListener('DOMContentLoaded', async () => {
-	// Load the configuration file
-	const configRequest = await fetch('../../config.json');
-	if (!configRequest.ok) {
-	  throw new Error(`Loading config error: ${configRequest.status}`);
-	}
-	const config = await configRequest.json();
-	
 	// DOM elements
 	const chrono = document.getElementById('timer');
 
 	// WebSocket
-	const wsServer = new WebSocket(`ws://${config.HOST_IP}:1234`);
+	const wsServer = new WebSocket(`ws://localhost:1234`);
   	let foxdotWs = null;
 
 	// CodeMirror
@@ -85,6 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	// Reset timer on click
 	chrono.addEventListener('click', ()=> functionUtils.resetChrono(wsServer));
 
+	// Evaluate the code and highlight the block with a flash
 	function evaluateCode(cm, multi){
 		var [blockCode, startLine, endLine] = functionUtils.getCodeAndCheckStop(cm, multi);
 	
@@ -145,43 +139,36 @@ document.addEventListener('DOMContentLoaded', async () => {
 	  });
 
 
-	// TODO recieve autocomplete functions  
-	  function foxDotWs(){
-		foxdotWs = new WebSocket(`ws://${config.HOST_IP}:${config.FOXDOT_WS_PORT}`);
+	function foxDotWs(){
+		foxdotWs = new WebSocket(`ws://localhost:20000`);
 		foxdotWs.onopen = () => {
-		  foxdotWs.send(JSON.stringify({ type: 'get_autocomplete' }));
+			foxdotWs.send(JSON.stringify({ type: 'get_autocomplete' }));
 		};
 		foxdotWs.onmessage = (event) => {
-		  try {
+			try {
 			const message = JSON.parse(event.data);
 			if (message.type === 'autocomplete') {
-			  const { loops, fxList, synthList } = functionUtils.formatFoxDotAutocomplete(message);
-	
-			  foxdotAutocomplete.loopList = loops;
-			  foxdotAutocomplete.fxList = fxList;
-			  foxdotAutocomplete.synths= synthList;
-	
-			  if (loops.length == 0 || fxList.length == 0 || synthList.length == 0) {
+				const { loops, fxList, synthList } = functionUtils.formatFoxDotAutocomplete(message);
+
+				foxdotAutocomplete.loopList = loops;
+				foxdotAutocomplete.fxList = fxList;
+				foxdotAutocomplete.synths= synthList;
+
+				if (loops.length == 0 || fxList.length == 0 || synthList.length == 0) {
 				console.error(`Error on retrieving loops name (${loops.length}), effets (${fxList.length}), synths (${synthList.length})`);
-			  }
+				}
 			}
-		  } catch (error) {
+			} catch (error) {
 			console.error('Error on FoxDot message ', error);
-		  }
+			}
 		};
-		// foxdotWs.onclose = (e) => {
-		//   console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
-		//   setTimeout(function() {
-		//   foxDotWs();
-		//   }, 1000);
-		// };
 		foxdotWs.onerror = (err) => {
-		  console.error('Socket encountered error: ', err.message, 'Closing socket');
-		  foxdotWs.close();
+			console.error('Socket encountered error: ', err.message, 'Closing socket');
+			foxdotWs.close();
 		};
-	  }
+	}
 	
-	  foxDotWs();
+	foxDotWs();
 
 	// piano insert at cursor
 	document.querySelectorAll('#piano-roll .piano-key li').forEach(key => {

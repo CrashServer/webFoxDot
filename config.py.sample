@@ -1,0 +1,3 @@
+# Configuration file when running the server with python server.py
+# rename this file to config.py and update the FOXDOT_PATH to the path of your FoxDot installation
+FOXDOT_PATH = "/your/path/to/FoxDot"

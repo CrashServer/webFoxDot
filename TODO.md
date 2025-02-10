@@ -5,11 +5,15 @@
 - [ ] autocomplete 
 
 # log
-- [ ] fix better output
+- [ ] fix better output (on error and color)
 
 ## Server
 - [ ] python vs python3
 
 ## Autocomplete
 - [X] fix automatic retrieve
-- [ ] fix end of line with .
+- [X] fix end of line with .
+- [ ] add definition
+
+## editor
+- [ ] fix python synthax highlight

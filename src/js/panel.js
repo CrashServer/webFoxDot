@@ -1,12 +1,6 @@
 import { EventEmitter } from './eventBus.js';
 import { playersList, updatePlayersList } from './functionUtils.js';
 
-const configRequest = await fetch('../../config.json' );
-  if (!configRequest.ok) {
-    throw new Error(`Error reading config file: ${configRequest.status}`);
-  }
-const config = await configRequest.json();
-
 // Toggle Panel
 const panel = document.getElementById('panel')
 const panelToggle = document.getElementById('panelToggle');
@@ -21,7 +15,7 @@ panelToggle.addEventListener('change', () => {
   }
 })
 
-const ws = new WebSocket(`ws://${config.HOST_IP}:20000`);
+const ws = new WebSocket(`ws://localhost:20000`);
 
 ws.onopen = function() {
     console.log('FoxDot WebSocket connection opened');
