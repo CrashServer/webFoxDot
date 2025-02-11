@@ -123,3 +123,17 @@ export function setupConfigPanel(editor) {
         }
       });
 }
+
+export function updateHelpPanel(loopList, fxList, synthList) {
+    document.getElementById('helpLoop').innerHTML = loopList
+        .map(loop => `<span>${loop.displayText}</span>`)
+        .join('');
+    document.getElementById('helpFx').innerHTML = fxList
+        .filter(loop => !loop.displayText.endsWith("_"))
+        .map(fx => `<span>${fx.displayText}</span>`)
+        .join('');
+    document.getElementById('helpSynth').innerHTML = synthList
+        .filter(synth => !synth.displayText.endsWith("_"))
+        .map(synth => `<span>${synth.displayText}</span>`)
+        .join('');
+} 

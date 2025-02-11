@@ -70,11 +70,70 @@ fieldset {
   overflow: auto;
 }
 
-#help.simple-text {
-  overflow-wrap: break-word;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+.help-tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
+
+.help-tabs input[type="radio"] {
+  display: none;
+}
+
+.help-tabs label:hover {
+  background: var(--text-col-2);
+  color: var(--bg-col-1);
+}
+
+.help-tabs label {
+  flex: 1;
+  margin: 0;
+  padding: 0.5rem;
+  cursor: pointer;
+  border: 1px solid var(--text-col-2);
+  margin-right: 0.5rem;
+  border-radius: 0.1rem;
+  color: var(--text-col-2);
+  font-size: 16px;
+}
+
+/* Hide by default */
+#helpLoop, #helpSynth, #helpFx {
+  display: none;
+  column-count: 2;
+}
+
+#helpLoop span, #helpSynth span, #helpFx span {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+/* Show content based on selected */
+#tab-loop:checked ~ #help #helpLoop,
+#tab-synth:checked ~ #help #helpSynth,
+#tab-fx:checked ~ #help #helpFx {
+    display: block;
+}
+
+.help-tabs input[type="radio"]:checked + label {
+  background: var(--text-col-2);
+  color: var(--bg-col-1);
+}
+
+/* Buttons look */
+.help-tabs label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+#help {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 0.2rem;
+}
+
 
 .h10 {
   max-height: 10vh;

@@ -65,7 +65,28 @@
 			<section class="help">
 				<fieldset class="info-row">
 					<legend>Help</legend>
-					<div id="help" class="simple-text h40"></div>
+					<div class="help-tabs">
+						<div>
+							<input type="radio" id="tab-loop" name="help-tab" checked>
+							<label for="tab-loop">Loop</label>
+							<input type="radio" id="tab-synth" name="help-tab">
+							<label for="tab-synth">Synth</label>
+							<input type="radio" id="tab-fx" name="help-tab">
+							<label for="tab-fx">FX</label>
+							
+							<div id="help" class="simple-text">
+								<div id="helpLoop">
+									Loops
+								</div>
+								<div id="helpSynth">
+									Synths
+								</div>
+								<div id="helpFx">
+									Fx
+								</div>
+							</div>
+						</div>
+					</div>
 				</fieldset>
 			</section>
     	</div>

@@ -1,5 +1,5 @@
 import CodeMirror from 'codemirror';
-import { setupConfigPanel } from './configPanel.js';
+import { setupConfigPanel, updateHelpPanel } from './configPanel.js';
 import { EventEmitter } from './eventBus.js';
 
 import 'codemirror/addon/dialog/dialog.js'
@@ -18,9 +18,7 @@ import 'codemirror/mode/python/python.js'
 
 import { logsUtils } from './logs.js';
 import { functionUtils } from './functionUtils.js';
-// TODO Autocomplete and definitions
 import { foxdotAutocomplete } from './foxdotAutocomplete.js';
-// import { showDefinition } from './foxdotDefinitions.js';
 
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/addon/hint/show-hint.css'
@@ -121,7 +119,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 		'Alt-4': () => markerUtils.resetMarkers(), 
 		'Ctrl-Enter': (cm) => {evaluateCode(cm, false)},
 		'Ctrl-Alt-Enter': (cm) => {evaluateCode(cm, true)},
-		'Alt-I': (cm) => showDefinition(cm),
 		'Alt-F': "findPersistent",
 		'Ctrl-G': "findNext",
 		'Ctrl-Alt-Left': "goLineStart",
@@ -149,10 +146,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 			const message = JSON.parse(event.data);
 			if (message.type === 'autocomplete') {
 				const { loops, fxList, synthList } = functionUtils.formatFoxDotAutocomplete(message);
-
 				foxdotAutocomplete.loopList = loops;
 				foxdotAutocomplete.fxList = fxList;
 				foxdotAutocomplete.synths= synthList;
+
+				updateHelpPanel(loops, fxList, synthList);
 
 				if (loops.length == 0 || fxList.length == 0 || synthList.length == 0) {
 				console.error(`Error on retrieving loops name (${loops.length}), effets (${fxList.length}), synths (${synthList.length})`);
