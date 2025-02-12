@@ -57,35 +57,35 @@
 			<section class="players">
 				<fieldset class="info-row">
 					<legend>Players</legend>
-					<div id="players" class="simple-text h20">       
+					<div id="players" class="simple-text">       
 					</div>
 				</fieldset>
 			</section>
 
-			<section class="help">
+			<section class="helpInfo">
 				<fieldset class="info-row">
 					<legend>Help</legend>
 					<div class="help-tabs">
-						<div>
-							<input type="radio" id="tab-loop" name="help-tab" checked>
-							<label for="tab-loop">Loop</label>
-							<input type="radio" id="tab-synth" name="help-tab">
-							<label for="tab-synth">Synth</label>
-							<input type="radio" id="tab-fx" name="help-tab">
-							<label for="tab-fx">FX</label>
-							
-							<div id="help" class="simple-text">
-								<div id="helpLoop">
-									Loops
-								</div>
-								<div id="helpSynth">
-									Synths
-								</div>
-								<div id="helpFx">
-									Fx
-								</div>
-							</div>
+						<input type="radio" id="tab-loop" name="help-tab" checked>
+						<input type="radio" id="tab-synth" name="help-tab">
+						<input type="radio" id="tab-fx" name="help-tab">
+						
+						<ul class="help-label">
+							<li class="tab"><label for="tab-loop">Loop</label></li>
+							<li class="tab"><label for="tab-synth">Synth</label></li>
+							<li class="tab"><label for="tab-fx">FX</label></li>
+						</ul>
+						<!-- <div id="help-content" class="simple-text"> -->
+						<div class="help-content" id="helpLoop">
+							Loops
 						</div>
+						<div class="help-content" id="helpSynth">
+							Synths
+						</div>
+						<div class="help-content" id="helpFx">
+							Fx
+						</div>
+						<!-- </div> -->
 					</div>
 				</fieldset>
 			</section>

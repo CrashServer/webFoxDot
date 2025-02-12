@@ -4,6 +4,28 @@ import { playersList, updatePlayersList } from './functionUtils.js';
 // Toggle Panel
 const panel = document.getElementById('panel')
 const panelToggle = document.getElementById('panelToggle');
+let isResizing = false;
+let startX;
+let startWidth;
+
+panel.addEventListener('mousedown', function(e) {
+    const rect = panel.getBoundingClientRect();
+    if (e.clientX > rect.right - 10 && e.clientX < rect.right) {
+        isResizing = true;
+        startX = e.clientX;
+        startWidth = rect.width;
+    }
+});
+
+document.addEventListener('mousemove', function(e) {
+    if (!isResizing) return;
+    const width = startWidth + (e.clientX - startX);
+    panel.style.width = `${width}px`;
+});
+
+document.addEventListener('mouseup', function() {
+    isResizing = false;
+});
 
 
 panelToggle.addEventListener('change', () => {

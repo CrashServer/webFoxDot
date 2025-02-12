@@ -33,6 +33,9 @@ export const logsUtils = {
 
   // Show logs in the console
   appendLog(message, color) {
+    if (message === '') {
+      return;
+    }
     const entry = document.createElement('pre');
     entry.className = 'log-entry';
     if (color){
