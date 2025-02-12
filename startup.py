@@ -1,5 +1,3 @@
-# import this file in your foxdot/lib/Custom/startup.py file to start the FoxDot WebSocket server
-
 import asyncio
 import json
 import threading
@@ -115,7 +113,7 @@ class WebFoxDotPanelWs():
 		return fx_json_list
 
 	async def sendSynthList(self):
-		args_to_remove = ['amp', 'sus', 'gate', 'pan', 'freq', 'mul', 'bus', 'atk', 'decay', 'rel', 'level', 'peak', 'blur', 'beat_dur', 'buf', ]
+		args_to_remove = ['amp', 'sus', 'gate', 'pan', 'freq', 'mul', 'bus', 'atk', 'decay', 'rel', 'level', 'peak', 'blur', 'beat_dur', 'buf', "vib", "fmod"]
 		synthList = []
 		path = os.path.join(FOXDOT_ROOT, "osc", "scsyndef", "")
 		synth_list = sorted([f for f in SynthDefs])
@@ -232,7 +230,6 @@ try:
 	wsPanel = WebFoxDotPanelWs()
 except Exception as e:
 	print(f"Error starting FoxDot WebSocket server: {e}")
-# wsPanel.start()
 
 def unsolo():
     ''' Unsolo all soloed players'''
