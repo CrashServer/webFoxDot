@@ -150,7 +150,7 @@
     transform: translateX(26px);
 }
 
-button#openModalBtn {
+button#openModalShortCutBtn {
     padding: 8px;
     background-color: var(--beat-col-2);
     color: var(--text-col-1);
@@ -160,7 +160,7 @@ button#openModalBtn {
     transition: background-color 0.3s;
 }
 
-button#openModalBtn:hover {
+button#openModalShortCutBtn:hover {
     background: var(--text-col-1);
     color: var(--beat-col-1);
 }
