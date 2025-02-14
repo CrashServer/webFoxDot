@@ -17,7 +17,8 @@ We know that there are already some people using IDEs like Pulsar or Vim with Fo
 ## 🚩 Known issues
 - WebFoxDot is not working with Chrome or other Chromium based browser (Vivaldi, Edge, Brave, Opera, ... ), some shortcuts are not recognized
 - Not tested yet on Safari or other web browsers
-- Some shortcuts may not 
+- Some shortcuts may not work because we don't have tested all configurations (Windows, Linux, MacOs, different browser, different key mapping...)
+- Not tested with Renardo yet
 
 ## ✅ Requirements
 - a fully working FoxDot or Renardo installation
