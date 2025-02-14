@@ -10,7 +10,9 @@ WebFoxDot is a web-based interface for the FoxDot or Renardo live coding music e
 ![WebFoxDot](./webFoxdot.png)
 
 ## 🤔 Why WebFoxDot?
-We first made WebTroop to replace the old Troop interface, we did it our way so that it was effective and reliable live. As the work was already done, we decided to make a WebFoxDot interface for the live coding community, something more generic that anyone can use. We know that there are already some people using IDEs like Pulsar or Vim with FoxDot, but we wanted to make something more user-friendly, more visual and focus on the live aspect of FoxDot. 
+We first made WebTroop to replace the old Troop interface, we did it our way so that it was effective and reliable live. As the work was already done, we decided to make a WebFoxDot interface for the live coding community, something more generic that anyone can use. 
+
+We know that there are already some people using IDEs like Pulsar or Vim with FoxDot, but we wanted to make something more user-friendly, more visual and focus on the live aspect of FoxDot. 
 
 ## 🚩 Known issues
 - WebFoxDot is not working with Chrome or other Chromium based browser (Vivaldi, Edge, Brave, Opera, ... ), some shortcuts are not recognized
@@ -157,7 +159,7 @@ All things that work in FoxDot or Renardo will work in WebFoxDot.
 
 - evaluate a line of code with `Ctrl-Enter`
 - evaluate a block of code with `Ctrl-Alt-Enter`
-- stop all players with `Ctrl-;'
+- stop all players with `Ctrl-;`
 - auto-completion with `Ctrl-Space`
 - comment a line and stop a player with `Alt-x`
 - you can comment and stop a block with `Ctrl-Alt-x`
