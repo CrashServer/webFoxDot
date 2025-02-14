@@ -5,8 +5,8 @@
 	<!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Web FoxDot</title>
-  <script type="module" crossorigin src="/assets/index-CfrM_6Uz.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-B4PIvg0e.css">
+  <script type="module" crossorigin src="/assets/index-DBo1bBep.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-D9Z-cTU4.css">
 </head>
 <body>
     <div id="main-container">
@@ -59,15 +59,36 @@
 			<section class="players">
 				<fieldset class="info-row">
 					<legend>Players</legend>
-					<div id="players" class="simple-text h20">       
+					<div id="players" class="simple-text">       
 					</div>
 				</fieldset>
 			</section>
 
-			<section class="help">
+			<section class="helpInfo">
 				<fieldset class="info-row">
 					<legend>Help</legend>
-					<div id="help" class="simple-text h40"></div>
+					<div class="help-tabs">
+						<input type="radio" id="tab-loop" name="help-tab" checked>
+						<input type="radio" id="tab-synth" name="help-tab">
+						<input type="radio" id="tab-fx" name="help-tab">
+						
+						<ul class="help-label">
+							<li class="tab"><label for="tab-loop">Loop</label></li>
+							<li class="tab"><label for="tab-synth">Synth</label></li>
+							<li class="tab"><label for="tab-fx">FX</label></li>
+						</ul>
+						<!-- <div id="help-content" class="simple-text"> -->
+						<div class="help-content" id="helpLoop">
+							Loops
+						</div>
+						<div class="help-content" id="helpSynth">
+							Synths
+						</div>
+						<div class="help-content" id="helpFx">
+							Fx
+						</div>
+						<!-- </div> -->
+					</div>
 				</fieldset>
 			</section>
     	</div>
@@ -216,10 +237,6 @@
 					<div class="shortcut-desc">Copy current line</div>
 				</div>
 				<div class="shortcut">
-					<div class="shortcut-key"><strong>Ctrl + D</strong></div>
-					<div class="shortcut-desc">Select current line</div>
-				</div>
-				<div class="shortcut">
 					<div class="shortcut-key"><strong>Ctrl + Shift + D</strong></div>
 					<div class="shortcut-desc">Duplicate current line</div>
 				</div>
@@ -244,18 +261,18 @@
 					<div class="shortcut-desc">Comment block and stop it</div>
 				</div>
 				
-				<div class="shortcut">
+				<!-- <div class="shortcut">
 					<div class="shortcut-key"><strong>Alt + 1/2/3</strong></div>
 					<div class="shortcut-desc">Add a color marker</div>
-				</div>
-				<div class="shortcut">
+				</div> -->
+				<!-- <div class="shortcut">
 					<div class="shortcut-key"><strong>Alt + 4</strong></div>
 					<div class="shortcut-desc">Remove markers</div>
-				</div>
-				<div class="shortcut">
+				</div> -->
+				<!-- <div class="shortcut">
 					<div class="shortcut-key"><strong>Alt + I</strong></div>
 					<div class="shortcut-desc">Inline help</div>
-				</div>
+				</div> -->
 				<div class="shortcut">
 					<div class="shortcut-key"><strong>Alt + F</strong></div>
 					<div class="shortcut-desc">Open search console</div>

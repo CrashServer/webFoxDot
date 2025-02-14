@@ -37,7 +37,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 	// CodeMirror
 	const editor = CodeMirror(document.getElementById('editor'), {
-		mode: 'python',
+		mode: {	name: 'python',
+				extra_builtins: ['PRand', 'PWhite', 'PxRand', 'PwRand', 'PChain', 'PZ12', 'PTree', 'PWalk', 'PDelta', 'PSquare', 'PIndex', 'PFibMod', 'PShuf', 'PAlt', 'PStretch', 'PPairs', 'PZip', 'PZip2', 'PStutter', 'PSq', 'P10', 'PStep', 'PSum', 'PRange', 'PTri', 'PSine', 'PEuclid', 'PEuclid2', 'PBern', 'PBeat', 'PDur', 'PDelay', 'PStrum', 'PQuicken', 'PRhythm', 'PJoin', 'linvar', 'var', 'expvar', 'sinvar', 'Pvar' ],
+				extra_keywords: ["Clock", "Scale", "Root", "Server", "Group", "Samples", "now", "inf"],
+		},
 		theme: 'material',
 		lineNumbers: true,
 		autofocus: true,
@@ -49,6 +52,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 		keyMap: 'sublime',
 	});
     
+	// Restore the code if it was stored
+	const savedCode = localStorage.getItem('webFoxDotEditorContent');
+    if (savedCode) {
+        editor.setValue(savedCode);
+    }
+	// Store the code on change
+	editor.on('change', () => {
+        localStorage.setItem('webFoxDotEditorContent', editor.getValue());
+    });
+
 	setupConfigPanel(editor);
 
 	// Init the logs panel
@@ -66,7 +79,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 		try {
 		  const message = JSON.parse(event.data);
 		  if (message.type === 'foxdot_log') {
-			console.log(message.data);
+			// console.log(message.data);
 			logsUtils.appendLog(message.data, message.color);
 		  }
 		} catch (error) {

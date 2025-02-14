@@ -179,10 +179,19 @@ export const functionUtils = {
 
         // Get SynthDefs
         const synthDefs = message.autocomplete.synthList;
-        const formattedSynthDefs = synthDefs.map(synth => {
-          return { text: synth.displayText + "()", displayText: synth.displayText };
+        const updatedSynthDefs = synthDefs
+            .filter(synth => synth.displayText !== 'play2')
+            .map(synth => {
+            if (synth.displayText === 'play1') {
+                return { ...synth, displayText: 'play'};
+            }
+            return synth;
         });
-        const argsSynth = synthDefs.map(synth => {
+
+        const formattedSynthDefs = updatedSynthDefs.map(synth => {
+          return { text: synth.displayText, displayText: synth.displayText };
+        });
+        const argsSynth = updatedSynthDefs.map(synth => {
           return { text: synth.displayText + "(" + synth.text + ")", displayText: synth.displayText + "_" };
         });
         const allSynthDefs = [...formattedSynthDefs, ...argsSynth];
