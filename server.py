@@ -3,7 +3,7 @@ import asyncio
 import websockets
 from subprocess import Popen, PIPE
 import os
-from config import FOXDOT_PATH
+from config import FOXDOT_PATH, PROGRAM_NAME
 
 async def broadcast_log(message, clients):
     for client in clients:
@@ -30,10 +30,13 @@ async def handle_websocket(websocket, path, foxdot_process, clients):
         print("Client disconnected")
 
 async def main():
-    
+    if PROGRAM_NAME == "renardo":
+        cmdLine = ["renardo", "-p"]
+    else:
+        cmdLine = ['python', '-m', 'FoxDot', '-p']
     # Start FoxDot
     foxdot_process = Popen(
-        ['python', '-m', 'FoxDot', '-p'],
+        cmdLine,
         cwd=FOXDOT_PATH,
         stdin=PIPE,
         stdout=PIPE,  

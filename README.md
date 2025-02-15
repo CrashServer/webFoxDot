@@ -20,6 +20,9 @@ We know that there are already some people using IDEs like Pulsar or Vim with Fo
 - Some shortcuts may not work because we don't have tested all configurations (Windows, Linux, MacOs, different browser, different key mapping...)
 - Not tested with Renardo yet
 
+> [!WARNING]
+> This version is not yet fully working with Renardo, we are working on it. 
+
 ## ✅ Requirements
 - a fully working FoxDot or Renardo installation
 - a working SuperCollider installation
