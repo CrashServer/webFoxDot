@@ -1,5 +1,21 @@
 # Configuration file when running the server with python server.py
-# rename this file to config.py and update the FOXDOT_PATH to the path of your FoxDot installation
-FOXDOT_PATH = "/your/path/to/FoxDot"
-# FOXDOT_PATH = "/" # when using renardo installed globally with pipx
-PROGRAM_NAME = "FoxDot" # ["renardo", "FoxDot"] 
+# 
+# IMPORTANT: Please uncomment the PROGRAM_PATH AND PROGRAM_CMD lines that corresponds to the program you are using and fill the correct path when using a Github clone of FoxDot.
+# Also make sure to set the correct python executable (python3 or python).
+#
+# 1. I'm using FoxDot installed with pip 
+#
+# PROGRAM_PATH = "/"
+# PROGRAM_CMD = ['FoxDot', '-p']
+#
+#
+# 2. I'm using the FoxDot library cloned from GitHub
+#
+# PROGRAM_PATH = "/my/path/to/FoxDot"
+# PROGRAM_CMD = ['python', '-m', 'FoxDot', '-p']
+#
+#
+# 3. I'm using Renardo installed with pipx
+#
+# PROGRAM_PATH = "/"
+# PROGRAM_CMD = ["renardo", '-p'] 

@@ -18,10 +18,10 @@ We know that there are already some people using IDEs like Pulsar or Vim with Fo
 - WebFoxDot is not working with Chrome or other Chromium based browser (Vivaldi, Edge, Brave, Opera, ... ), some shortcuts are not recognized
 - Not tested yet on Safari or other web browsers
 - Some shortcuts may not work because we don't have tested all configurations (Windows, Linux, MacOs, different browser, different key mapping...)
-- Not tested with Renardo yet
+- Beta tested with Renardo
 
 > [!WARNING]
-> This version is not yet fully working with Renardo, we are working on it. 
+> This version is in test with Renardo, everything may not work as expected. See the Renardo compatibility section for more information.
 
 ## ✅ Requirements
 - a fully working FoxDot or Renardo installation
@@ -34,7 +34,7 @@ We know that there are already some people using IDEs like Pulsar or Vim with Fo
 - a beautiful and responsive interface with resizable panel and console logs
 - change font family, code font size and interface font size 
 - change the code theme with dozens of themes available
-- a console log to see the output of foxdot with the last item appended at the top
+- a console log to see the output of FoxDot with the last item appended at the top
 - a panel to see all relevant information (Bpm, Scale, Root, Cpu usage, Timer, the current beat modulo, a list of active players and a list of available Loops, Synths, and Fx)
 - show the list of active players with their id, name of synth or loop, time of activity (with color based on elapsed time).
 - the ability to stop a player by clicking on the list.
@@ -67,13 +67,15 @@ Your startup file is located in the FoxDot directory:
 /FoxDot/lib/Custom/startup.py
 ```
 
+### Start SuperCollider as usual
+
 ### Run Foxdot with a server:
 ```python
 python server.py
 ```
 
 > [!WARNING]
-> You don't need to run FoxDot manually, the server will start FoxDot for you. 
+> You don't need to run FoxDot/Renardo manually, the server will start FoxDot/Renardo for you. 
 > Also, make sure you have something like this 3 lines printed in your terminal, if not restart from the beginning:
 > ```python
 > FoxDot started, pid: 79311
@@ -127,7 +129,7 @@ cd webFoxDot
 cp config.js.sample config.js
 nano config.js
 
-Change the FOXDOT_PATH to your foxdot path
+Change the FOXDOT_PATH to your foxdot path. Not yet fully compatible with Renardo, you have to change the spawn in `server.js` to the correct command. 
 ```
 
 ### Copy the content of this startup.py file to your FoxDot startup file:
@@ -136,13 +138,15 @@ Your startup file is located in the FoxDot directory:
 /FoxDot/lib/Custom/startup.py
 ```
 
-### Run the FoxDot server:
-```python
-python server.py
+### Start SuperCollider as usual
+
+### Run the FoxDot/Renardo server:
+```javascript
+node server.js
 ```
 
 > [!WARNING]
-> You don't need to run FoxDot manually, the server will start FoxDot for you. 
+> You don't need to run FoxDot/Renardo manually, the server will start FoxDot/Renardo for you. 
 > Also, make sure you have something like this 3 lines printed in your terminal, if not restart from the beginning:
 > ```python
 > FoxDot started, pid: 79311
@@ -157,6 +161,22 @@ npm run dev
 ```
 
 ### Open your browser and go to `http://localhost:3000`
+
+
+## 🦊 Renardo compatibility
+In order to make WebFoxDot compatible with Renardo, here are the steps to follow:
+
+Inject the websocket package dependency in the Renardo code:
+```bash
+pipx inject renardo websockets
+```
+
+Copy the content of startup-renardo.py to your Renardo startup file:
+```bash
+This should be located in the Renardo directory, something like:
+~/.local/pipx/venvs/renardo/lib/python3.13/site-packages/renardo_lib/Custom/startup.py
+```
+
 
 ## 🚀 Usage
 All things that work in FoxDot or Renardo will work in WebFoxDot. 
@@ -179,6 +199,7 @@ And many more to discover, a full list of shortcuts is available in the config p
 - [ ] Add more interface themes
 - [ ] Add a vim mode
 - [ ] a clear console button
+- [X] renardo compatibility
 
 ## 📝 License
 

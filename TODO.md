@@ -1,8 +1,8 @@
-- [ ] fix reset Timer
+- [X] fix reset Timer
 - [X] backendServer 
 - [X] add foxdot unsolo()
 - [X] migrate server.js t to python
-- [ ] autocomplete 
+- [X] autocomplete 
 
 # log
 - [ ] fix better output (on error and color)
@@ -16,4 +16,4 @@
 - [ ] add definition
 
 ## editor
-- [ ] fix python synthax highlight
+- [X] fix python syntax highlight
