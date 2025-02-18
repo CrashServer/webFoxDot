@@ -3,7 +3,12 @@ import asyncio
 import websockets
 from subprocess import Popen, PIPE
 import os
-from config import FOXDOT_PATH, PROGRAM_NAME
+
+try:
+    from config import PROGRAM_PATH, PROGRAM_CMD
+except Exception as e:
+    print("Make sure to uncomment the correct PROGRAM_PATH and PROGRAM_CMD in config.py")
+    
 
 async def broadcast_log(message, clients):
     for client in clients:
@@ -30,22 +35,25 @@ async def handle_websocket(websocket, path, foxdot_process, clients):
         print("Client disconnected")
 
 async def main():
-    if PROGRAM_NAME == "renardo":
-        cmdLine = ["renardo", "-p"]
-    else:
-        cmdLine = ['python', '-m', 'FoxDot', '-p']
     # Start FoxDot
-    foxdot_process = Popen(
-        cmdLine,
-        cwd=FOXDOT_PATH,
-        stdin=PIPE,
-        stdout=PIPE,  
-        stderr=PIPE, 
-        env={**os.environ, "PYTHONUNBUFFERED": "1"}
-    )
-    
-    print(f"FoxDot started, pid: {foxdot_process.pid}")
-    
+    try: 
+        foxdot_process = Popen(
+            PROGRAM_CMD,
+            cwd=PROGRAM_PATH,
+            stdin=PIPE,
+            stdout=PIPE,  
+            stderr=PIPE, 
+            env={**os.environ, "PYTHONUNBUFFERED": "1"}
+        )
+
+        print(f"FoxDot started, pid: {foxdot_process.pid}")
+    except Exception as e:
+        print(f"Error starting FoxDot: {e}")
+        print("##### IMPORTANT #####")
+        print("Make sure FoxDot or Renardo is correctly installed and the path is set in config.py")
+        
+        return
+
     # Set of connected clients
     clients = set()
     
