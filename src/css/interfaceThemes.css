@@ -35,3 +35,98 @@
     --col--full-blue: rgba(41, 96, 155);
     --flash-col: rgba(255, 202, 40, 0.5);
 }
+
+/* CyberPunk theme */
+:root.cyberpunk-theme {
+    --bg-col-1: #0a0a16;
+    --bg-col-2: #1a1a2e;
+    --border-col-1: #ff2e97;
+    --border-col-2: #00f6ff;
+    --text-col-1: #00ff9f;
+    --text-col-2: #ff2e97;
+    --beat-col-1: #1a1a2e;
+    --beat-col-2: #ff2e9755;
+    --col-red: rgba(255, 0, 84, 0.75);
+    --col-green: rgba(0, 255, 159, 0.75);
+    --col-blue: rgba(0, 246, 255, 0.75);
+    --col-full-red: #ff0054;
+    --col-full-green: #00ff9f;
+    --col-full-blue: #00f6ff;
+    --flash-col: rgba(255, 46, 151, 0.5);
+}
+
+/* Synthwave Theme */
+:root.synthwave-theme {
+    --bg-col-1: #241734;
+    --bg-col-2: #2a1b3d;
+    --border-col-1: #ff00ff;
+    --border-col-2: #00ffff;
+    --text-col-1: #ff71ce;
+    --text-col-2: #b967ff;
+    --beat-col-1: #332359;
+    --beat-col-2: #ff71ce55;
+    --col-red: rgba(255, 113, 206, 0.75);
+    --col-green: rgba(1, 255, 198, 0.75);
+    --col-blue: rgba(0, 255, 255, 0.75);
+    --col-full-red: #ff71ce;
+    --col-full-green: #01ffc6;
+    --col-full-blue: #00ffff;
+    --flash-col: rgba(185, 103, 255, 0.5);
+}
+
+/* Forest Theme */
+:root.forest-theme {
+    --bg-col-1: #1a2f1a;
+    --bg-col-2: #233d23;
+    --border-col-1: #5c8b3c;
+    --border-col-2: #2d5a27;
+    --text-col-1: #9cce6a;
+    --text-col-2: #c4e2a6;
+    --beat-col-1: #2d4a2d;
+    --beat-col-2: #5c8b3cd1;
+    --col-red: rgba(201, 68, 68, 0.75);
+    --col-green: rgba(92, 139, 60, 0.75);
+    --col-blue: rgba(60, 139, 127, 0.75);
+    --col-full-red: #c94444;
+    --col-full-green: #5c8b3c;
+    --col-full-blue: #3c8b7f;
+    --flash-col: rgba(156, 206, 106, 0.5);
+}
+
+/* Ocean Theme */
+:root.ocean-theme {
+    --bg-col-1: #0a2635;
+    --bg-col-2: #0f3447;
+    --border-col-1: #2d9cb4;
+    --border-col-2: #1a7b8f;
+    --text-col-1: #8be0f7;
+    --text-col-2: #64c5e8;
+    --beat-col-1: #153f54;
+    --beat-col-2: #2d9cb455;
+    --col-red: rgba(242, 90, 90, 0.75);
+    --col-green: rgba(90, 242, 203, 0.75);
+    --col-blue: rgba(45, 156, 180, 0.75);
+    --col-full-red: #f25a5a;
+    --col-full-green: #5af2cb;
+    --col-full-blue: #2d9cb4;
+    --flash-col: rgba(139, 224, 247, 0.5);
+}
+
+/* Desert Theme */
+:root.desert-theme {
+    --bg-col-1: #2b1810;
+    --bg-col-2: #3d2317;
+    --border-col-1: #d4804e;
+    --border-col-2: #a65d32;
+    --text-col-1: #ffd700;
+    --text-col-2: #ffa500;
+    --beat-col-1: #4a2b1d;
+    --beat-col-2: #d4804e55;
+    --col-red: rgba(217, 80, 48, 0.75);
+    --col-green: rgba(171, 145, 68, 0.75);
+    --col-blue: rgba(95, 158, 160, 0.75);
+    --col-full-red: #d95030;
+    --col-full-green: #ab9144;
+    --col-full-blue: #5f9ea0;
+    --flash-col: rgba(255, 215, 0, 0.5);
+}

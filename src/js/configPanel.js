@@ -115,13 +115,26 @@ export function setupConfigPanel(editor) {
     }
 
     // Theme change
-    themeInterface.addEventListener('change', (event) => {
-        if (event.target.checked) {
-            document.documentElement.classList.remove('light-theme');
-        } else {
-            document.documentElement.classList.add('light-theme');
-        }
-      });
+    // themeInterface.addEventListener('change', (event) => {
+    //     if (event.target.checked) {
+    //         document.documentElement.classList.remove('light-theme');
+    //     } else {
+    //         document.documentElement.classList.add('light-theme');
+    //     }
+    //   });
+    const themeInterfaceSelector = document.getElementById('themeInterfaceSelector');
+    
+    // Restore the interface theme
+    const savedInterfaceTheme = localStorage.getItem('selectedInterfaceTheme') || 'dark';
+    document.documentElement.className = `${savedInterfaceTheme}-theme`;
+    themeInterfaceSelector.value = savedInterfaceTheme;
+    
+    // Gérer le changement de thème
+    themeInterfaceSelector.addEventListener('change', (e) => {
+        const selectedInterfaceTheme = e.target.value;
+        document.documentElement.className = `${selectedInterfaceTheme}-theme`;
+        localStorage.setItem('selectedInterfaceTheme', selectedInterfaceTheme);
+    });
 }
 
 export function updateHelpPanel(loopList, fxList, synthList) {
