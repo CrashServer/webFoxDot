@@ -59,16 +59,23 @@ async def main():
     
     # Function to handle FoxDot output
     async def handle_foxdot_output():
-        stout = []
+        buffer = []
         while True:
             line = await asyncio.get_event_loop().run_in_executor(
                 None, 
                 foxdot_process.stdout.readline
             )
             if line:
-                log_message = line.decode().strip()
+                log_message = line.decode()
+                if '^' not in log_message or not log_message.replace('^', '').isspace():
+                    log_message = line.decode().strip()
                 print(log_message)
-                await broadcast_log(log_message, clients)
+                
+                buffer.append(log_message)
+                if not log_message or log_message.endswith((">>>", "...")):
+                    if buffer:
+                        await broadcast_log("\n".join(buffer), clients)
+                        buffer = []                
 
     # start the task to handle FoxDot output in the background
     asyncio.create_task(handle_foxdot_output())

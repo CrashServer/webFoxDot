@@ -125,7 +125,6 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0;
-  background: var(--bg-col-2);
   width: 100%;
   /* flex-grow: 1; */
   height: 20%;
@@ -153,10 +152,11 @@ body {
 }
 
 .log-entry {
-  margin: 2px 0;
+  margin: 4px 2px;
   padding: 2px 5px;
   white-space: pre-wrap;
   border-left: 3px solid var(--border-col-1);
+  background: var(--bg-col-2);
 }
 
 .log-entry.error-log {
