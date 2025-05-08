@@ -8,6 +8,7 @@ export function setupConfigPanel(editor) {
     const fontSizeValue = document.getElementById('fontSizeValue');
     const fontInterfaceSizeSlider = document.getElementById('fontInterfaceSizeSlider');
     const fontInterfaceSizeValue = document.getElementById('fontInterfaceSizeValue');
+    const keybindingsSelect = document.getElementById('keybindingsSelect');
     const modal = document.getElementById("shortcutsModal");
     const modalbtn = document.getElementById("openModalShortCutBtn");
     const closeModal = document.getElementById("closeModal");
@@ -26,6 +27,13 @@ export function setupConfigPanel(editor) {
         fontSelect.value = savedFont;
         editor.getWrapperElement().style.fontFamily = savedFont;
         }
+
+    // Keybindings restore
+    const savedKeybindings = localStorage.getItem('webFoxPreferredKeybindings');
+    if (savedKeybindings) {
+        keybindingsSelect.value = savedKeybindings;
+        editor.setOption('keyMap', savedKeybindings);
+    }
 
     // Open the panel
     configButton.addEventListener('click', () => {
@@ -97,6 +105,13 @@ export function setupConfigPanel(editor) {
         localStorage.setItem('webFoxPreferredInterfaceFontSize', size);
     };
 
+    // Keybindings change
+    keybindingsSelect.addEventListener('change', (e) => {
+        const keybindings = e.target.value;
+        editor.setOption('keyMap', keybindings);
+        localStorage.setItem('webFoxPreferredKeybindings', keybindings);
+    });
+
     // Open the shortcut modal
     modalbtn.onclick = function() {
         modal.style.display = "block";
@@ -150,3 +165,4 @@ export function updateHelpPanel(loopList, fxList, synthList) {
         .map(synth => `<span>${synth.displayText}</span>`)
         .join('');
 } 
+
