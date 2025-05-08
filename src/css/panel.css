@@ -6,7 +6,7 @@
   border: 1px solid var(--border-col-1);
   color: var(--text-col-1);
   width: 300px;
-  padding: 2px;
+  padding: 0.2rem;
   resize:none;
   user-select: none;
   overflow: auto;
@@ -31,17 +31,22 @@
   direction: ltr;
 }
 
-h1 {
+/* h1 {
     margin-bottom: 20px;
-}
+} */
 
 header, section, footer {
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
     direction: ltr;
-  }
-  
+}
+
+header {
+  container-type: inline-size;
+}
+
 header h1 {
   font-size: 1.2rem;
+  font-size: clamp(0.75rem, 15cqw, 2rem);
   text-align: center;
   margin: 0 0 10px 0;
 }
@@ -53,6 +58,7 @@ h2 {
 
 fieldset {
   padding: 0.4rem;
+  flex: 1;
 }
 
 .foxdot-info {
@@ -60,7 +66,7 @@ fieldset {
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   /* gap: 0.1rem */
 }
 
@@ -73,6 +79,7 @@ fieldset {
 
 .info-row legend {
   font-size: 1rem;
+  padding: 0 10px;
 }
 
 .info-text {

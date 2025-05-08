@@ -130,3 +130,79 @@
     --col-full-blue: #5f9ea0;
     --flash-col: rgba(255, 215, 0, 0.5);
 }
+
+/* Minimal Theme */
+:root.minimal-theme {
+    --bg-col-1: #ffffff;
+    --bg-col-2: #f8f9fa;
+    --border-col-1: #dee2e6;
+    --border-col-2: #ced4da;
+    --text-col-1: #212529;
+    --text-col-2: #495057;
+    --beat-col-1: #e9ecef;
+    --beat-col-2: #4263eb55;
+    --col-red: rgba(250, 82, 82, 0.75);
+    --col-green: rgba(64, 192, 87, 0.75);
+    --col-blue: rgba(66, 99, 235, 0.75);
+    --col-full-red: #fa5252;
+    --col-full-green: #40c057;
+    --col-full-blue: #4263eb;
+    --flash-col: rgba(66, 99, 235, 0.3);
+}
+
+/* Nord Theme */
+:root.nord-theme {
+    --bg-col-1: #2e3440;
+    --bg-col-2: #3b4252;
+    --border-col-1: #434c5e;
+    --border-col-2: #4c566a;
+    --text-col-1: #eceff4;
+    --text-col-2: #d8dee9;
+    --beat-col-1: #434c5e;
+    --beat-col-2: #88c0d055;
+    --col-red: rgba(191, 97, 106, 0.75);
+    --col-green: rgba(163, 190, 140, 0.75);
+    --col-blue: rgba(136, 192, 208, 0.75);
+    --col-full-red: #bf616a;
+    --col-full-green: #a3be8c;
+    --col-full-blue: #88c0d0;
+    --flash-col: rgba(136, 192, 208, 0.3);
+}
+
+/* Tokyo Night Theme */
+:root.tokyo-theme {
+    --bg-col-1: #1a1b26;
+    --bg-col-2: #24283b;
+    --border-col-1: #414868;
+    --border-col-2: #565f89;
+    --text-col-1: #a9b1d6;
+    --text-col-2: #787c99;
+    --beat-col-1: #24283b;
+    --beat-col-2: #7aa2f755;
+    --col-red: rgba(247, 118, 142, 0.75);
+    --col-green: rgba(158, 206, 106, 0.75);
+    --col-blue: rgba(122, 162, 247, 0.75);
+    --col-full-red: #f7768e;
+    --col-full-green: #9ece6a;
+    --col-full-blue: #7aa2f7;
+    --flash-col: rgba(122, 162, 247, 0.3);
+}
+
+/* Monokai Pro Theme */
+:root.monokai-theme {
+    --bg-col-1: #2d2a2e;
+    --bg-col-2: #363537;
+    --border-col-1: #494745;
+    --border-col-2: #5b5553;
+    --text-col-1: #fcfcfa;
+    --text-col-2: #c1c0c0;
+    --beat-col-1: #363537;
+    --beat-col-2: #a9dc7655;
+    --col-red: rgba(255, 97, 136, 0.75);
+    --col-green: rgba(169, 220, 118, 0.75);
+    --col-blue: rgba(120, 220, 232, 0.75);
+    --col-full-red: #ff6188;
+    --col-full-green: #a9dc76;
+    --col-full-blue: #78dce8;
+    --flash-col: rgba(169, 220, 118, 0.3);
+}
