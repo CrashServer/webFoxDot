@@ -197,7 +197,7 @@ And many more to discover, a full list of shortcuts is available in the config p
 
 ## 🗺️ Roadmap
 - [ ] Add more interface themes
-- [ ] Add a vim mode
+- [x] Add a vim mode
 - [ ] a clear console button
 - [X] renardo compatibility
 
@@ -206,3 +206,4 @@ And many more to discover, a full list of shortcuts is available in the config p
 Copyright © 2025 [CrashServer](https://github.com/CrashServer).
 
 This project is MIT licensed.
+

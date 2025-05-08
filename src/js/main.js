@@ -4,6 +4,7 @@ import { EventEmitter } from './eventBus.js';
 
 import 'codemirror/addon/dialog/dialog.js'
 import 'codemirror/keymap/sublime'
+import 'codemirror/keymap/vim'
 import 'codemirror/addon/edit/matchbrackets'
 import 'codemirror/addon/edit/closebrackets'
 import 'codemirror/addon/comment/comment'
@@ -148,7 +149,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 		hint: (cm) => foxdotAutocomplete.hint(cm, CodeMirror),
 	  });
 
-
 	function foxDotWs(){
 		foxdotWs = new WebSocket(`ws://localhost:20000`);
 		foxdotWs.onopen = () => {
@@ -199,3 +199,4 @@ document.addEventListener('DOMContentLoaded', async () => {
 		  editor.replaceRange(index+',', {line, ch}, {line, ch});
 	  }
 })
+
